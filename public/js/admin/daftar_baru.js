@@ -8,29 +8,58 @@ function nextPage() {
     var selectVal = true
 
     $("#page" + currentPage + " input").each(function (i, e) {
+        var id = $(e).attr("id")
+        // console.log(id);
         if ($(this).val() == '') {
-            var id = $(e).attr("id")
-            // console.log(id);
             $(e).removeClass("border border-gray-300")
             $(e).addClass("border border-red-500")
             $("#" + id).next("span").removeAttr("hidden")
             inputVal = false
         }
+        else {
+            $(e).removeClass("border border-gray-300")
+            $(e).removeClass("border border-red-500")
+            $(e).addClass("border border-blue-500")
+            $("#" + id).next("span").attr("hidden", true)
+        }
     })
     $("#page" + currentPage + " select").each(function (i, e) {
+        var id = $(e).attr("id")
+        // console.log(id);
         if ($(this).val() == '') {
-            var id = $(e).attr("id")
-            // console.log(id);
-            $(e).removeClass("border border-gray-300")
-            $(e).addClass("border border-red-500")
+            $(e).removeClass("border-gray-300")
+            $(e).addClass("border-red-500")
             $("#" + id).next("span").removeAttr("hidden")
             selectVal = false
         }
+        else {
+            $(e).removeClass("border-gray-300")
+            $(e).removeClass("border-red-500")
+            $(e).addClass("border-blue-500")
+            $("#" + id).next("span").attr("hidden", true)
+        }
     })
     if (inputVal && selectVal) {
+        if (currentPage == 2) {
+            var inputValPass = []
+            $(".checkPass").each(function (i, e) {
+                var inputCheckPass = $(this).next("input").val()
+                inputValPass.push(inputCheckPass)
+            })
+            if (inputValPass[0] !== inputValPass[1]) {
+                $("#confirmPass").prev("span").attr("hidden", true)
+                $("#confirmPass").removeAttr("hidden")
+                inputValPass.splice(0, inputValPass.length)
+                return false
+            }
+            else {
+                $("#confirmPass").attr("hidden", true)
+                inputValPass.splice(0, inputValPass.length)
+            }
+        }
         // console.log(currentPage);
-        $("#step" + currentPage).removeClass("after:border-b after:border-gray-200 after:border-1")
-        $("#step" + currentPage).addClass("after:border-b after:border-blue-600 after:border-1")
+        $("#step" + currentPage).removeClass("after:border-gray-200")
+        $("#step" + currentPage).addClass("after:border-blue-600")
         $("#span" + currentPage).attr("hidden", true)
         $("#span" + currentPage).next("svg").removeAttr("hidden")
         currentPage++
