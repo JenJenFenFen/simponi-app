@@ -80,8 +80,19 @@
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                     </div>
                     <div>
-                        <label for="kota_pt_mhs" class="block mb-2 text-sm font-medium text-gray-900">Kota Pendidikan Terakhir</label>
-                        <input type="text" id="kota_pt_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
+                        <label for="jurusan_pt_mhs" class="block mb-2 text-sm font-medium text-gray-900">Jurusan Pendidikan Terakhir</label>
+                        <select id="jurusan_pt_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
+                        </select>
+                        <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
+                    </div>
+                    <div>
+                        <label for="stts_mhs" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                        <select id="stts_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
+                            <option value="" selected>Pilih Status</option>
+                            <option value="Belum Menikah">Belum Menikah</option>
+                            <option value="Menikah">Menikah</option>
+                            <option value="Janda/Duda">Janda/Duda</option>
+                        </select>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                     </div>
                     <div>
@@ -139,15 +150,15 @@
                     </div>
                     <div>
                         <label for="semester_mhs" class="block mb-2 text-sm font-medium text-gray-900">Semester</label>
-                        <input type="text" id="semester_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" value="1" disabled readonly>
+                        <input type="text" id="semester_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" value="1" readonly>
                     </div>
                     <div>
                         <label for="tahun_ajaran_mhs" class="block mb-2 text-sm font-medium text-gray-900">Tahun Ajaran</label>
-                        <input type="text" id="tahun_ajaran_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" value="1" disabled readonly>
+                        <input type="text" id="tahun_ajaran_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" value="1" readonly>
                     </div>
                     <div>
                         <label for="nim_mhs" class="block mb-2 text-sm font-medium text-gray-900">Nomor Induk Mahasiswa</label>
-                        <input type="text" id="nim_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" placeholder="Silakan pilih jurusan terlebih dahulu" disabled readonly>
+                        <input type="text" id="nim_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" placeholder="Silakan pilih jurusan terlebih dahulu" readonly>
                     </div>
                     <div class="relative">
                         <label for="password_mhs" class="block mb-2 text-sm font-medium text-gray-900">Password Baru</label>
@@ -177,78 +188,83 @@
                     <div class="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
                             <label for="nama_lengkap_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                            <input type="text" id="nama_lengkap_mhs_val" name="nama_lengkap_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="nama_lengkap_mhs_val" name="nama_lengkap_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="gender_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Gender</label>
-                            <input type="text" id="gender_mhs_val" name="gender_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="gender_mhs_val" name="gender_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="tempat_lahir_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Tempat Lahir</label>
-                            <input type="text" id="tempat_lahir_mhs_val" name="tempat_lahir_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="tempat_lahir_mhs_val" name="tempat_lahir_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="tanggal_lahir_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Lahir</label>
-                            <input type="date" id="tanggal_lahir_mhs_val" name="tanggal_lahir_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="date" id="tanggal_lahir_mhs_val" name="tanggal_lahir_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div> 
                         <div>
                             <label for="ktp_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">KTP</label>
-                            <input type="text" id="ktp_mhs_val" name="ktp_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="ktp_mhs_val" name="ktp_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="agama_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Agama</label>
-                            <input type="text" id="agama_mhs_val" name="agama_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="agama_mhs_val" name="agama_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="pendidikan_terakhir_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Pendidikan Terakhir</label>
-                            <input type="text" id="pendidikan_terakhir_mhs_val" name="pendidikan_terakhir_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="pendidikan_terakhir_mhs_val" name="pendidikan_terakhir_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="sekolah_pt_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Sekolah Pendidikan Terakhir</label>
-                            <input type="text" id="sekolah_pt_mhs_val" name="sekolah_pt_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="sekolah_pt_mhs_val" name="sekolah_pt_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
-                            <label for="kota_pt_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Kota Pendidikan Terakhir</label>
-                            <input type="text" id="kota_pt_mhs_val" name="kota_pt_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <label for="jurusan_pt_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Jurusan Pendidikan Terakhir</label>
+                            <input type="text" id="jurusan_pt_mhs_val" name="jurusan_pt_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
+                        </div>
+                        <div>
+                            <label for="stts_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                            <input type="text" id="stts_mhs_val" name="stts_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="alamat_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
-                            <input type="text" id="alamat_mhs_val" name="alamat_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="alamat_mhs_val" name="alamat_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="email_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                            <input type="text" id="email_mhs_val" name="email_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="email_mhs_val" name="email_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="no_hp_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">No Handphone</label>
-                            <input type="text" id="no_hp_mhs_val" name="no_hp_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="no_hp_mhs_val" name="no_hp_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="jurusan_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Jurusan yang Diambil</label>
-                            <input type="text" id="jurusan_mhs_val" name="jurusan_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="jurusan_mhs_val" name="jurusan_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="jenjang_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Jenjang</label>
-                            <input type="text" id="jenjang_mhs_val" name="jenjang_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="jenjang_mhs_val" name="jenjang_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="kelas_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Kelas</label>
-                            <input type="text" id="kelas_mhs_val" name="kelas_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="kelas_mhs_val" name="kelas_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="semester_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Semester</label>
-                            <input type="text" id="semester_mhs_val" name="semester_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="semester_mhs_val" name="semester_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="tahun_ajaran_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Tahun Ajaran</label>
-                            <input type="text" id="tahun_ajaran_mhs_val" name="tahun_ajaran_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="tahun_ajaran_mhs_val" name="tahun_ajaran_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="nim_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Nomor Induk Mahasiswa</label>
-                            <input type="text" id="nim_mhs_val" name="nim_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" disabled readonly>
+                            <input type="text" id="nim_mhs_val" name="nim_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         {{-- hidden --}}
                         <input type="file" id="photo_mhs_val" name="photo_mhs_val" hidden>
+                        <input type="hidden" id="password_mhs_val" name="password_mhs_val">
                     </div>
 
                     {{-- checklist --}}
