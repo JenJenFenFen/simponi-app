@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('country', 15);
             $table->date('date_birth');
             $table->string('religion', 10);
+            $table->string('ktp', 20);
             $table->text('address');
             $table->string('status', 15);
             $table->string('number_phone', 15);
