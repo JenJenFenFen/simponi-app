@@ -16,6 +16,7 @@ class LecturerIdentity extends Model
         'country',
         'date_birth',
         'religion',
+        'ktp',
         'address',
         'status',
         'number_phone',
