@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_logins', function (Blueprint $table) {
             $table->id();
             $table->string('email', 50)->unique();
-            $table->string('password', 50);
+            $table->text('password');
             $table->unsignedBigInteger('id_rule');
             $table->foreign('id_rule')->references('id')->on('rules');
             $table->timestamps();
