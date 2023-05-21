@@ -3,6 +3,26 @@ var totalPage = $(".page").length
 
 // console.log(totalPage);
 
+$("#pendidikan_terakhir_mhs").on("change", function () {
+    if ($(this).val() == 'SMA/SMK') {
+        $("#jurusan_pt_mhs").empty()
+        $("#jurusan_pt_mhs").append(`
+            <option value="" selected>Pilih Jurusan Pendidikan Terakhir</option>
+            <option value="IPA">IPA</option>
+            <option value="IPS">IPS</option>
+        `)
+    }
+    else {
+        $("#jurusan_pt_mhs").empty()
+        $("#jurusan_pt_mhs").append(`
+            <option value="" selected>Pilih Jurusan Pendidikan Terakhir</option>
+            <option value="Teknik Informatika">Teknik Informatika</option>
+            <option value="Sistem Informasi">Sistem Informasi</option>
+            <option value="Teknik Komputer">Teknik Komputer</option>
+        `)
+    }
+})
+
 function nextPage() {
     var inputVal = true
     var selectVal = true
@@ -84,7 +104,8 @@ function nextPage() {
         var agamaMhs = $("#agama_mhs").val()
         var ptMhs = $("#pendidikan_terakhir_mhs").val()
         var sptMhs = $("#sekolah_pt_mhs").val()
-        var kotaptMhs = $("#kota_pt_mhs").val()
+        var jurusanptMhs = $("#jurusan_pt_mhs").val()
+        var sttsMhs = $("#stts_mhs").val()
         var alamatMhs = $("#alamat_mhs").val()
         var emailMhs = $("#email_mhs").val()
         var nohpMhs = $("#no_hp_mhs").val()
@@ -94,7 +115,7 @@ function nextPage() {
         var semesterMhs = $("#semester_mhs").val()
         var tahunMhs = $("#tahun_ajaran_mhs").val()
         var nimMhs = $("#nim_mhs").val()
-        // var passMhs = $("#konfirmasi_password_mhs").val()
+        var passMhs = $("#konfirmasi_password_mhs").val()
 
         $("#nama_lengkap_mhs_val").val(namaMhs)
         $("#gender_mhs_val").val(genderMhs)
@@ -104,7 +125,8 @@ function nextPage() {
         $("#agama_mhs_val").val(agamaMhs)
         $("#pendidikan_terakhir_mhs_val").val(ptMhs)
         $("#sekolah_pt_mhs_val").val(sptMhs)
-        $("#kota_pt_mhs_val").val(kotaptMhs)
+        $("#jurusan_pt_mhs_val").val(jurusanptMhs)
+        $("#stts_mhs_val").val(sttsMhs)
         $("#alamat_mhs_val").val(alamatMhs)
         $("#email_mhs_val").val(emailMhs)
         $("#no_hp_mhs_val").val(nohpMhs)
@@ -114,9 +136,8 @@ function nextPage() {
         $("#semester_mhs_val").val(semesterMhs)
         $("#tahun_ajaran_mhs_val").val(tahunMhs)
         $("#nim_mhs_val").val(nimMhs)
+        $("#password_mhs_val").val(passMhs)
     }
-
-    // console.log($("#nama_lengkap_mhs_val").val());
 }
 
 function prevPage() {
