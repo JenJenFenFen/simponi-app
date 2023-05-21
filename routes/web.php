@@ -19,6 +19,8 @@ use App\Http\Controllers\UserController;
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'main']);
     Route::get('/daftar-mahasiswa', [AdminController::class, 'daftarMahasiswa']);
+    Route::get('/fetch-mahasiswa', [AdminController::class, 'fetchMahasiswa']);
+    Route::post('/send-mahasiswa', [AdminController::class, 'sendMahasiswa']);
     Route::get('/daftar-dosen', [AdminController::class, 'daftarDosen']);
 });
 
