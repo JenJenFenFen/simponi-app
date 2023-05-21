@@ -11,15 +11,16 @@ function nextPage() {
         var id = $(e).attr("id")
         // console.log(id);
         if ($(this).val() == '') {
-            $(e).removeClass("border border-gray-300")
-            $(e).addClass("border border-red-500")
+            $(e).removeClass("border-gray-300")
+            $(e).removeClass("border-blue-600")
+            $(e).addClass("border-red-600")
             $("#" + id).next("span").removeAttr("hidden")
             inputVal = false
         }
         else {
-            $(e).removeClass("border border-gray-300")
-            $(e).removeClass("border border-red-500")
-            $(e).addClass("border border-blue-500")
+            $(e).removeClass("border-gray-300")
+            $(e).removeClass("border-red-600")
+            $(e).addClass("border-blue-600")
             $("#" + id).next("span").attr("hidden", true)
         }
     })
@@ -28,14 +29,15 @@ function nextPage() {
         // console.log(id);
         if ($(this).val() == '') {
             $(e).removeClass("border-gray-300")
-            $(e).addClass("border-red-500")
+            $(e).removeClass("border-blue-600")
+            $(e).addClass("border-red-600")
             $("#" + id).next("span").removeAttr("hidden")
             selectVal = false
         }
         else {
             $(e).removeClass("border-gray-300")
-            $(e).removeClass("border-red-500")
-            $(e).addClass("border-blue-500")
+            $(e).removeClass("border-red-600")
+            $(e).addClass("border-blue-600")
             $("#" + id).next("span").attr("hidden", true)
         }
     })
@@ -73,6 +75,48 @@ function nextPage() {
             $("#btnProcess").removeAttr("hidden")
         }
     }
+    if ($("#pageValue").text() == 'mahasiswa') {
+        var namaMhs = $("#nama_lengkap_mhs").val()
+        var genderMhs = $("#gender_mhs").val()
+        var tplMhs = $("#tempat_lahir_mhs").val()
+        var tglMhs = $("#tanggal_lahir_mhs").val()
+        var ktpMhs = $("#ktp_mhs").val()
+        var agamaMhs = $("#agama_mhs").val()
+        var ptMhs = $("#pendidikan_terakhir_mhs").val()
+        var sptMhs = $("#sekolah_pt_mhs").val()
+        var kotaptMhs = $("#kota_pt_mhs").val()
+        var alamatMhs = $("#alamat_mhs").val()
+        var emailMhs = $("#email_mhs").val()
+        var nohpMhs = $("#no_hp_mhs").val()
+        var jurusanMhs = $("#jurusan_mhs").val()
+        var jenjangMhs = $("#jenjang_mhs").val()
+        var kelasMhs = $("#kelas_mhs").val()
+        var semesterMhs = $("#semester_mhs").val()
+        var tahunMhs = $("#tahun_ajaran_mhs").val()
+        var nimMhs = $("#nim_mhs").val()
+        // var passMhs = $("#konfirmasi_password_mhs").val()
+
+        $("#nama_lengkap_mhs_val").val(namaMhs)
+        $("#gender_mhs_val").val(genderMhs)
+        $("#tempat_lahir_mhs_val").val(tplMhs)
+        $("#tanggal_lahir_mhs_val").val(tglMhs)
+        $("#ktp_mhs_val").val(ktpMhs)
+        $("#agama_mhs_val").val(agamaMhs)
+        $("#pendidikan_terakhir_mhs_val").val(ptMhs)
+        $("#sekolah_pt_mhs_val").val(sptMhs)
+        $("#kota_pt_mhs_val").val(kotaptMhs)
+        $("#alamat_mhs_val").val(alamatMhs)
+        $("#email_mhs_val").val(emailMhs)
+        $("#no_hp_mhs_val").val(nohpMhs)
+        $("#jurusan_mhs_val").val(jurusanMhs)
+        $("#jenjang_mhs_val").val(jenjangMhs)
+        $("#kelas_mhs_val").val(kelasMhs)
+        $("#semester_mhs_val").val(semesterMhs)
+        $("#tahun_ajaran_mhs_val").val(tahunMhs)
+        $("#nim_mhs_val").val(nimMhs)
+    }
+
+    // console.log($("#nama_lengkap_mhs_val").val());
 }
 
 function prevPage() {
@@ -91,3 +135,60 @@ function prevPage() {
         $("#btnPrev").attr("hidden", true)
     }
 }
+
+$("#photo_mhs").on("change", function () {
+    var photoMhs = this.files[0]
+    var photoList = new DataTransfer()
+    var photoMhsInput = $("#photo_mhs_val")[0] // untuk mengambil DOM biar bisa mengakses files
+
+    photoList.items.add(photoMhs)
+    readPhoto("#photo_mhs_dis", this)
+    photoMhsInput.files = photoList.files
+})
+
+$("#remember").on("change", function () {
+    if ($(this).is(":checked")) {
+        $("#btnProcess").removeClass("bg-gray-200")
+        $("#btnProcess").removeClass("cursor-not-allowed")
+        $("#btnProcess").addClass("bg-blue-700")
+        $("#btnProcess").addClass("hover:bg-blue-800")
+        $("#btnProcess").prop("disabled", false)
+    }
+    else {
+        $("#btnProcess").removeClass("bg-blue-700")
+        $("#btnProcess").removeClass("hover:bg-blue-800")
+        $("#btnProcess").addClass("bg-gray-200")
+        $("#btnProcess").addClass("cursor-not-allowed")
+        $("#btnProcess").prop("disabled", true)
+    }
+})
+
+$("#jurusan_mhs").on("change", function () {
+    const year = new Date().getFullYear().toString()
+    var jurusanVal = $("#jurusan_mhs").val()
+    var jurusanCode = {
+        "Teknik Informatika": "25",
+        "Sistem Informasi": "22",
+        "Teknik Komputer": "27"
+    }
+    var code = jurusanCode[jurusanVal]
+    var numEntry
+
+    $.ajax({
+        type: "get",
+        url: "/admin/fetch-mahasiswa",
+        data: {
+            jurusan: jurusanVal
+        },
+        success: function (response) {
+            // console.log(response);
+            numEntry = parseInt(response) + 1
+            $("#nim_mhs").val((parseInt(year + code) * 10000) + numEntry)
+        }
+    });
+})
+
+// $("#btnProcess").on("click", function () {
+//     // console.log('saya diklik');
+    
+// })
