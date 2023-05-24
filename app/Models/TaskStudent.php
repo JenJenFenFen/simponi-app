@@ -11,6 +11,8 @@ class TaskStudent extends Model
 
     protected $fillable = [
         'id_task_lecturer',
-        'task_file'
+        'id_student_identity',
+        'task_file',
+        'score'
     ];
 }
