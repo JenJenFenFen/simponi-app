@@ -29,6 +29,7 @@ class StudentIdentity extends Model
         'id_classname',
         'semester',
         'academic_year',
+        'id_classname',
         'photo'
     ];
 }
