@@ -141,24 +141,12 @@
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                     </div>
                     <div>
-                        <label for="kelas_mhs" class="block mb-2 text-sm font-medium text-gray-900">Kelas</label>
-                        <select id="kelas_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
-                            <option value="" selected>Pilih Kelas</option>
-                            <option value="TI11" selected>TI11</option>
-                        </select>
-                        <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
-                    </div>
-                    <div>
                         <label for="semester_mhs" class="block mb-2 text-sm font-medium text-gray-900">Semester</label>
                         <input type="text" id="semester_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" value="1" readonly>
                     </div>
                     <div>
                         <label for="tahun_ajaran_mhs" class="block mb-2 text-sm font-medium text-gray-900">Tahun Ajaran</label>
-                        <input type="text" id="tahun_ajaran_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" value="1" readonly>
-                    </div>
-                    <div>
-                        <label for="nim_mhs" class="block mb-2 text-sm font-medium text-gray-900">Nomor Induk Mahasiswa</label>
-                        <input type="text" id="nim_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" placeholder="Silakan pilih jurusan terlebih dahulu" readonly>
+                        <input type="text" id="tahun_ajaran_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                     </div>
                     <div class="relative">
                         <label for="password_mhs" class="block mb-2 text-sm font-medium text-gray-900">Password Baru</label>
@@ -247,20 +235,12 @@
                             <input type="text" id="jenjang_mhs_val" name="jenjang_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
-                            <label for="kelas_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Kelas</label>
-                            <input type="text" id="kelas_mhs_val" name="kelas_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
-                        </div>
-                        <div>
                             <label for="semester_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Semester</label>
                             <input type="text" id="semester_mhs_val" name="semester_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         <div>
                             <label for="tahun_ajaran_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Tahun Ajaran</label>
                             <input type="text" id="tahun_ajaran_mhs_val" name="tahun_ajaran_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
-                        </div>
-                        <div>
-                            <label for="nim_mhs_val" class="block mb-2 text-sm font-medium text-gray-900">Nomor Induk Mahasiswa</label>
-                            <input type="text" id="nim_mhs_val" name="nim_mhs_val" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 cursor-not-allowed" readonly>
                         </div>
                         {{-- hidden --}}
                         <input type="file" id="photo_mhs_val" name="photo_mhs_val" hidden>
