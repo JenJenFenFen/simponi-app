@@ -23,7 +23,6 @@ return new class extends Migration
             $table->text('description');
             $table->text('task_description_file');
             $table->date('deadline');
-            $table->integer('score');
             $table->timestamps();
         });
     }
