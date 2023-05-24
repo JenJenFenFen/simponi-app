@@ -11,6 +11,28 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
+class Code {
+    private $code;
+
+    public function __construct($jurusan) {
+        $this->setCode($jurusan);
+    }
+
+    private function setCode($jurusan) {
+        $jurusanCode = [
+            "Teknik Informatika" => '25',
+            "Sistem Informasi" => '23',
+            "Teknik Komputer" => '26'
+        ];
+
+        $this->code = $jurusanCode[$jurusan];
+    }
+
+    public function getCode() {
+        return $this->code;
+    }
+}
+
 class AdminController extends Controller
 {
     public function main() {
@@ -38,12 +60,20 @@ class AdminController extends Controller
         $login->id_rule = '2';
         $login->save();
 
-        $id_login = DB::table('user_logins')->select('id')->where('email', $request->email_mhs_val)->get();
+        // get id for id_user_login
+        $id_login_raw = DB::table('user_logins')->select('id')->where('email', $request->email_mhs_val)->get();
+        $id_login = json_decode($id_login_raw, true)[0]['id'];
+
+        // create nim
+        $year = date('Y');
+        $codeMajor = (new Code($request->jurusan_mhs_val))->getCode();
+        $count = DB::table('student_identities')->where('major', $request->jurusan_mhs_val)->count() + 1;
+        $nim = (intval($year . $codeMajor) * 10000) + $count;
 
         $mahasiswa = new StudentIdentity();
 
         $mahasiswa->id_user_login = $id_login;
-        $mahasiswa->nim = $request->nim_mhs_val;
+        $mahasiswa->nim = $nim;
         $mahasiswa->name = $request->nama_lengkap_mhs_val;
         $mahasiswa->gender = $request->gender_mhs_val;
         $mahasiswa->country = $request->tempat_lahir_mhs_val;
@@ -55,11 +85,16 @@ class AdminController extends Controller
         $mahasiswa->number_phone = $request->no_hp_mhs_val;
         $mahasiswa->email = $request->email_mhs_val;
         $mahasiswa->last_education = $request->pendidikan_terakhir_mhs_val;
+        $mahasiswa->school_last_education = $request->sekolah_pt_mhs_val;
         $mahasiswa->major_last_education = $request->jurusan_pt_mhs_val;
         $mahasiswa->major = $request->jurusan_mhs_val;
         $mahasiswa->study_program = $request->jenjang_mhs_val;
         $mahasiswa->semester = $request->semester_mhs_val;
-        $mahasiswa->photo = $request->nim_mhs_val;
+        $mahasiswa->academic_year = $request->tahun_ajaran_mhs_val;
+        $mahasiswa->photo = $request->photo_mhs_val->store('mahasiswa/' . $nim);
+        $mahasiswa->save();
+
+        return redirect('admin/daftar-mahasiswa');
     }
 
     public function daftarDosen() {
