@@ -1,5 +1,9 @@
 var currentPage = 1
 var totalPage = $(".page").length
+const year = new Date().getFullYear().toString()
+
+$("#tahun_ajaran_mhs").val(year)
+$("#tahun_ajaran_mhs_val").val(year)
 
 // console.log(totalPage);
 
@@ -113,7 +117,6 @@ function nextPage() {
         var jenjangMhs = $("#jenjang_mhs").val()
         var kelasMhs = $("#kelas_mhs").val()
         var semesterMhs = $("#semester_mhs").val()
-        var tahunMhs = $("#tahun_ajaran_mhs").val()
         var nimMhs = $("#nim_mhs").val()
         var passMhs = $("#konfirmasi_password_mhs").val()
 
@@ -134,7 +137,6 @@ function nextPage() {
         $("#jenjang_mhs_val").val(jenjangMhs)
         $("#kelas_mhs_val").val(kelasMhs)
         $("#semester_mhs_val").val(semesterMhs)
-        $("#tahun_ajaran_mhs_val").val(tahunMhs)
         $("#nim_mhs_val").val(nimMhs)
         $("#password_mhs_val").val(passMhs)
     }
@@ -183,33 +185,3 @@ $("#remember").on("change", function () {
         $("#btnProcess").prop("disabled", true)
     }
 })
-
-$("#jurusan_mhs").on("change", function () {
-    const year = new Date().getFullYear().toString()
-    var jurusanVal = $("#jurusan_mhs").val()
-    var jurusanCode = {
-        "Teknik Informatika": "25",
-        "Sistem Informasi": "22",
-        "Teknik Komputer": "27"
-    }
-    var code = jurusanCode[jurusanVal]
-    var numEntry
-
-    $.ajax({
-        type: "get",
-        url: "/admin/fetch-mahasiswa",
-        data: {
-            jurusan: jurusanVal
-        },
-        success: function (response) {
-            // console.log(response);
-            numEntry = parseInt(response) + 1
-            $("#nim_mhs").val((parseInt(year + code) * 10000) + numEntry)
-        }
-    });
-})
-
-// $("#btnProcess").on("click", function () {
-//     // console.log('saya diklik');
-    
-// })
