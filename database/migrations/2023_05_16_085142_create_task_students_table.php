@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_task_lecturer');
             $table->foreign('id_task_lecturer')->references('id')->on('task_lecturers');
+            $table->unsignedBigInteger('id_student_identity');
+            $table->foreign('id_student_identity')->references('id')->on('student_identities');
             $table->text('task_file');
+            $table->integer('score');
             $table->timestamps();
         });
     }
