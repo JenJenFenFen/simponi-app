@@ -16,7 +16,6 @@ class TaskLecturer extends Model
         'task_name',
         'description',
         'task_file',
-        'deadline',
-        'score',
+        'deadline'
     ];
 }
