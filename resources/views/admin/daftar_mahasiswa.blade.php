@@ -11,7 +11,7 @@
     {{-- sidebars --}}
     @include('components.sidebars')
     <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-black border-dashed rounded-lg mt-14">
+        <div class="p-4 mt-14">
             <div class="grid gap-4">
                 <div class="flex items-center justify-left h-24 rounded">
                     <p class="text-3xl text-black">Daftar Mahasiswa</p>
