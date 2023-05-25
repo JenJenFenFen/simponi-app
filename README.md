@@ -9,7 +9,7 @@ I have created a university website inspired by Simponi at Multi Data University
 - XAMPP.
 - MySQL.
 
-** Still under development **
+**Still under development**
 
 ## How to use
 
