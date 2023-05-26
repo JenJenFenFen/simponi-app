@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('email', 20);
             $table->string('last_education', 15);
             $table->string('major_last_education', 20);
+            $table->string('school_last_education', 50);
             $table->string('division', 20);
             $table->string('position', 15);
             $table->date('date_join');
