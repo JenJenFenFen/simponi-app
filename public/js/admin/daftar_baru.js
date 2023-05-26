@@ -140,6 +140,43 @@ function nextPage() {
         $("#nim_mhs_val").val(nimMhs)
         $("#password_mhs_val").val(passMhs)
     }
+    else {
+        var namaDsn = $("#nama_lengkap_dsn").val()
+        var genderDsn = $("#gender_dsn").val()
+        var tplDsn = $("#tempat_lahir_dsn").val()
+        var tglDsn = $("#tanggal_lahir_dsn").val()
+        var ktpDsn = $("#ktp_dsn").val()
+        var agamaDsn = $("#agama_dsn").val()
+        var ptDsn = $("#pendidikan_terakhir_dsn").val()
+        var sptDsn = $("#sekolah_pt_dsn").val()
+        var jurusanptDsn = $("#jurusan_pt_dsn").val()
+        var sttsDsn = $("#stts_dsn").val()
+        var alamatDsn = $("#alamat_dsn").val()
+        var emailDsn = $("#email_dsn").val()
+        var nohpDsn = $("#no_hp_dsn").val()
+        var psDsn = $("#program_studi_dsn").val()
+        var jabatanDsn = $("#jabatan_dsn").val()
+        var tglbergabungDsn = $("#tgl_bergabung_dsn").val()
+        var passDsn = $("#konfirmasi_password_dsn").val()
+
+        $("#nama_lengkap_dsn_val").val(namaDsn)
+        $("#gender_dsn_val").val(genderDsn)
+        $("#tempat_lahir_dsn_val").val(tplDsn)
+        $("#tanggal_lahir_dsn_val").val(tglDsn)
+        $("#ktp_dsn_val").val(ktpDsn)
+        $("#agama_dsn_val").val(agamaDsn)
+        $("#pendidikan_terakhir_dsn_val").val(ptDsn)
+        $("#sekolah_pt_dsn_val").val(sptDsn)
+        $("#jurusan_pt_dsn_val").val(jurusanptDsn)
+        $("#stts_dsn_val").val(sttsDsn)
+        $("#alamat_dsn_val").val(alamatDsn)
+        $("#email_dsn_val").val(emailDsn)
+        $("#no_hp_dsn_val").val(nohpDsn)
+        $("#program_studi_dsn_val").val(psDsn)
+        $("#jabatan_dsn_val").val(jabatanDsn)
+        $("#tgl_bergabung_dsn_val").val(tglbergabungDsn)
+        $("#password_dsn_val").val(passDsn)
+    }
 }
 
 function prevPage() {
@@ -167,6 +204,16 @@ $("#photo_mhs").on("change", function () {
     photoList.items.add(photoMhs)
     readPhoto("#photo_mhs_dis", this)
     photoMhsInput.files = photoList.files
+})
+
+$("#photo_dsn").on("change", function () {
+    var photoDsn = this.files[0]
+    var photoList = new DataTransfer()
+    var photoDsnInput = $("#photo_dsn_val")[0] // untuk mengambil DOM biar bisa mengakses files
+
+    photoList.items.add(photoDsn)
+    readPhoto("#photo_dsn_dis", this)
+    photoDsnInput.files = photoList.files
 })
 
 $("#remember").on("change", function () {
