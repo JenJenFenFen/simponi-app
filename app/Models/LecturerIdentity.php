@@ -23,6 +23,7 @@ class LecturerIdentity extends Model
         'email',
         'last_education',
         'major_last_education',
+        'school_last_education',
         'division',
         'position',
         'date_join',
