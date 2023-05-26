@@ -22,6 +22,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/fetch-mahasiswa', [AdminController::class, 'fetchMahasiswa']);
     Route::post('/send-mahasiswa', [AdminController::class, 'sendMahasiswa']);
     Route::get('/daftar-dosen', [AdminController::class, 'daftarDosen']);
+    Route::post('/send-dosen', [AdminController::class, 'sendDosen']);
 });
 
 
