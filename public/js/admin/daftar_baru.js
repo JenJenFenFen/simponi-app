@@ -14,6 +14,7 @@ $("#pendidikan_terakhir_mhs").on("change", function () {
             <option value="" selected>Pilih Jurusan Pendidikan Terakhir</option>
             <option value="IPA">IPA</option>
             <option value="IPS">IPS</option>
+            <option value="Komputer">Komputer</option>
         `)
     }
     else {
