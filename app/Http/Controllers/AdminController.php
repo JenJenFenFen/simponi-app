@@ -38,16 +38,12 @@ class AdminController extends Controller
     }
 
     public function daftarMahasiswa() {
+        $sendUrl = route('sendMahasiswa');
+
         return view('admin.daftar_mahasiswa', [
-            "title" => "mahasiswa"
+            "title" => "mahasiswa",
+            "sendUrl" => $sendUrl
         ]);
-    }
-
-    public function fetchMahasiswa(Request $request) {
-        $jurusan = $request->jurusan;
-        $students = DB::table('student_identities')->where('major', $jurusan)->count();
-
-        return $students;
     }
 
     public function sendMahasiswa(Request $request) {
@@ -92,12 +88,15 @@ class AdminController extends Controller
         $mahasiswa->photo = $request->photo_mhs_val->store('mahasiswa/' . $nim);
         $mahasiswa->save();
 
-        return redirect('admin/daftar-mahasiswa');
+        return redirect()->route('daftarMahasiswa');
     }
 
     public function daftarDosen() {
+        $sendUrl = route('sendDosen');
+
         return view('admin.daftar_dosen', [
-            "title" => "dosen"
+            "title" => "dosen",
+            "sendUrl" => $sendUrl 
         ]);
     }
 
@@ -140,6 +139,10 @@ class AdminController extends Controller
         $dosen->photo = $request->photo_dsn_val->store('dosen/' . $nid);
         $dosen->save();
 
-        return redirect('admin/daftar-dosen');
+        return redirect()->route('daftarDosen');
+    }
+
+    public function daftarKelas () {
+        return view('admin.daftar_kelas');
     }
 }
