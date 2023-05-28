@@ -13,7 +13,7 @@
         <div class="px-4 pb-[30px] rounded-lg mt-14">
             <div class="grid gap-4">
                 <div class="flex items-center justify-left h-24 rounded">
-                    <p class="text-3xl text-black">Daftar Dosen</p>
+                    <p class="text-3xl text-black">Pendaftaran Dosen</p>
                 </div>
             </div>
             {{-- progressbar --}}
@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <form method="POST" action="/admin/send-dosen" id="form_daftar_dsn" enctype="multipart/form-data">
+            <form method="POST" action="{{ $sendUrl }}" id="form_daftar_dsn" enctype="multipart/form-data">
                 @csrf
                 {{-- page 3 --}}
                 <div class="page" id="page3" hidden>
