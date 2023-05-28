@@ -25,8 +25,9 @@ I have created a university website inspired by Simponi at Multi Data University
     ```
     
 - Open PHPMyAdmin, create database named `simponi-app`.
+- Rename ".env.example" file to ".env".
 - Open the terminal, run `php artisan migrate:fresh` and `php artisan db:seed --class=RuleSeeder`.
 - Open two terminals:
     - First terminal, run `npm run dev` to turn on the Vite.
-    - Second terminal, run `php artisan server` to run the server.
+    - Second terminal, run `php artisan serve` to run the server.
 - Open browser, type `localhost:8000/admin`.
