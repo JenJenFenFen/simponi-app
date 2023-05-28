@@ -14,7 +14,7 @@
         <div class="px-4 pb-[30px] mt-14">
             <div class="grid gap-4">
                 <div class="flex items-center justify-left h-24 rounded">
-                    <p class="text-3xl text-black">Daftar Mahasiswa</p>
+                    <p class="text-3xl text-black">Pendaftaran Mahasiswa</p>
                 </div>
             </div>
             {{-- progressbar --}}
@@ -26,7 +26,7 @@
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for="nama_lengkap_mhs" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                        <input type="text" id="nama_lengkap_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
+                        <input type="text" id="nama_lengkap_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 alphabetValidation" required>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                     </div>
                     <div>
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <label for="tempat_lahir_mhs" class="block mb-2 text-sm font-medium text-gray-900">Tempat Lahir</label>
-                        <input type="text" id="tempat_lahir_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
+                        <input type="text" id="tempat_lahir_mhs" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300 alphabetValidation" required>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                     </div>
                     <div>
@@ -165,7 +165,7 @@
             </div>
 
             {{-- form --}}
-            <form method="POST" action="/admin/send-mahasiswa" id="form_daftar_mhs" enctype="multipart/form-data">
+            <form method="POST" action="{{ $sendUrl }}" id="form_daftar_mhs" enctype="multipart/form-data">
                 @csrf
                 {{-- page 3 --}}
                 <div class="page" id="page3" hidden>
@@ -263,6 +263,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="{{ asset('js/alphabet_validation.js') }}"></script>
     <script src="{{ asset('js/hide_show_password.js') }}"></script>
     <script src="{{ asset('js/read_photo.js') }}"></script>
     <script src="{{ asset('js/admin/daftar_baru.js') }}"></script>
