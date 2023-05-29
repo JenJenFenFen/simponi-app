@@ -1,3 +1,21 @@
+$("#btnAdd").on("click", function () {
+    if ($("#nama_kelas").val() == '') {
+        $("#confirmLengthKelas").attr("hidden", true)
+        $("#nama_kelas").next("span").attr("hidden", true)
+        $("#nama_kelas").next("span").removeAttr("hidden")
+        return false
+    }
+    else if ($("#nama_kelas").val().length < 4) {
+        $("#confirmLengthKelas").attr("hidden", true)
+        $("#nama_kelas").next("span").attr("hidden", true)
+        $("#confirmLengthKelas").removeAttr("hidden")
+    }
+    else {
+        $("#confirmLengthKelas").attr("hidden", true)
+        $("#nama_kelas").next("span").attr("hidden", true)
+    }
+})
+
 $("#remember").on("change", function () {
     if ($(this).is(":checked")) {
         $("#btnProcess").removeClass("bg-gray-200")
@@ -14,3 +32,5 @@ $("#remember").on("change", function () {
         $("#btnProcess").prop("disabled", true)
     }
 })
+
+// text-gray-900
