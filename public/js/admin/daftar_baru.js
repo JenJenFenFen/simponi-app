@@ -67,7 +67,24 @@ function nextPage() {
         }
     })
     if (inputVal && selectVal) {
-        if (currentPage == 2) {
+        if (currentPage == 1) {
+            ktpValidation("#ktp_mhs", "#confirmLengthKtp")
+            hpValidation("#no_hp_mhs", "#confirmLengthHp")
+            // if ($("#ktp_mhs").val().length < 16) {
+            //     $("#confirmLengthKtp").prev("span").attr("hidden", true)
+            //     $("#confirmLengthKtp").removeAttr("hidden")
+            //     return false
+            // }
+            // else $("#confirmLengthKtp").attr("hidden", true)
+
+            // if ($("#no_hp_mhs").val().length < 11) {
+            //     $("#confirmLengthHp").prev("span").attr("hidden", true)
+            //     $("#confirmLengthHp").removeAttr("hidden")
+            //     return false
+            // }
+            // else $("#confirmLengthHp").attr("hidden", true)
+        }
+        else if (currentPage == 2) {
             var inputValPass = []
             $(".checkPass").each(function (i, e) {
                 var inputCheckPass = $(this).next("input").val()
