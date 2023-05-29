@@ -9,6 +9,7 @@ function ktpValidation(element1, element2) {
     }
     else {
         e2.attr("hidden", true)
+        return true
     }
 }
 
@@ -23,5 +24,6 @@ function hpValidation(element1, element2) {
     }
     else {
         e2.attr("hidden", true)
+        return true
     }
 }
