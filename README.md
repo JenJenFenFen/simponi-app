@@ -13,7 +13,7 @@ I have created a university website inspired by Simponi at Multi Data University
 
 ## How to use
 
-- Make sure you have a Composer and Node.js.
+- Make sure you have a Composer, Node.js, and XAMPP. Download [Composer](https://getcomposer.org), [Node.js](https://nodejs.org/en/download), and [XAMPP](https://www.apachefriends.org/download.html) here.
 - Open XAMPP, turn on the Apache and MySQL.
 - Fork this repository.
 - Install all dependencies.
@@ -24,10 +24,10 @@ I have created a university website inspired by Simponi at Multi Data University
     npm install
     ```
     
-- Open PHPMyAdmin, create database named `simponi-app`.
+- Open PHPMyAdmin or [click](http://localhost/phpmyadmin) here. Create database named `simponi-app`.
 - Rename ".env.example" file to ".env".
 - Open the terminal, run `php artisan migrate:fresh` and `php artisan db:seed --class=RuleSeeder`.
 - Open two terminals:
-    - First terminal, run `npm run dev` to turn on the Vite.
-    - Second terminal, run `php artisan serve` to run the server.
+    - First terminal, run `npm run dev` to frontend.
+    - Second terminal, run `php artisan serve` to backend.
 - Open browser, type `localhost:8000/admin`.
