@@ -70,19 +70,10 @@ function nextPage() {
         if (currentPage == 1) {
             ktpValidation("#ktp_mhs", "#confirmLengthKtp")
             hpValidation("#no_hp_mhs", "#confirmLengthHp")
-            // if ($("#ktp_mhs").val().length < 16) {
-            //     $("#confirmLengthKtp").prev("span").attr("hidden", true)
-            //     $("#confirmLengthKtp").removeAttr("hidden")
-            //     return false
-            // }
-            // else $("#confirmLengthKtp").attr("hidden", true)
-
-            // if ($("#no_hp_mhs").val().length < 11) {
-            //     $("#confirmLengthHp").prev("span").attr("hidden", true)
-            //     $("#confirmLengthHp").removeAttr("hidden")
-            //     return false
-            // }
-            // else $("#confirmLengthHp").attr("hidden", true)
+            sizePhotovalidation("#photo_mhs", "#confirmSizePhoto")
+            if (ktpValidation("#ktp_mhs", "#confirmLengthKtp") == false || hpValidation("#no_hp_mhs", "#confirmLengthHp") == false || sizePhotovalidation("#photo_mhs", "#confirmSizePhoto") == false) {
+                return false
+            }
         }
         else if (currentPage == 2) {
             var inputValPass = []
