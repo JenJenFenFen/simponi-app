@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LecturerIdentity;
 use App\Models\StudentIdentity;
+use App\Models\Classname;
 use App\Models\UserLogin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class AdminController extends Controller
     }
 
     public function sendMahasiswa(Request $request) {
-        $login = new UserLogin();
+        $login = new UserLogin;
 
         $login->email = $request->email_mhs_val;
         $login->password = Crypt::encryptString($request->password_mhs_val);
@@ -64,7 +65,7 @@ class AdminController extends Controller
         $count = DB::table('student_identities')->where('major', $request->jurusan_mhs_val)->count() + 1;
         $nim = (intval($year . $codeMajor) * 10000) + $count;
 
-        $mahasiswa = new StudentIdentity();
+        $mahasiswa = new StudentIdentity;
 
         $mahasiswa->id_user_login = $id_login;
         $mahasiswa->nim = $nim;
@@ -101,7 +102,7 @@ class AdminController extends Controller
     }
 
     public function sendDosen(Request $request) {
-        $login = new UserLogin();
+        $login = new UserLogin;
 
         $login->email = $request->email_dsn_val;
         $login->password = Crypt::encryptString($request->password_dsn_val);
@@ -116,7 +117,7 @@ class AdminController extends Controller
         $count = DB::table('lecturer_identities')->count() + 1;
         $nid = (111 * 10000) + $count;
 
-        $dosen = new LecturerIdentity();
+        $dosen = new LecturerIdentity;
 
         $dosen->id_user_login = $id_login;
         $dosen->nid = $nid;
@@ -143,6 +144,22 @@ class AdminController extends Controller
     }
 
     public function daftarKelas () {
-        return view('admin.daftar_kelas');
+        $sendUrl = route('sendKelas');
+
+        return view('admin.daftar_kelas', [
+            "sendUrl" => $sendUrl
+        ]);
+    }
+
+    public function sendKelas (Request $request) {
+        $data = json_decode($request->nama_kelas_val, true);
+
+        foreach($data as $input) {
+            Classname::create([
+                "class_name" => strtoupper($input['className'])
+            ]);
+        }
+        
+        return redirect()->route('daftarKelas');
     }
 }
