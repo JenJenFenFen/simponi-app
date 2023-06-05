@@ -10,3 +10,4 @@ Route::get('/daftar-dosen', [AdminController::class, 'daftarDosen'])->name('daft
 Route::post('/send-dosen', [AdminController::class, 'sendDosen'])->name('sendDosen');
 Route::get('/daftar-kelas', [AdminController::class, 'daftarKelas'])->name('daftarKelas');
 Route::post('/send-kelas', [AdminController::class, 'sendKelas'])->name('sendKelas');
+Route::get('/input-mahasiswa-kelas', [AdminController::class, 'inputMahasiswaKelas'])->name('inputMahasiswaKelas');
