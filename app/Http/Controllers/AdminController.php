@@ -162,4 +162,16 @@ class AdminController extends Controller
         
         return redirect()->route('daftarKelas');
     }
+
+    public function inputMahasiswaKelas () {
+        $sendUrl = route('inputMahasiswaKelas');
+        $class = DB::table('classnames')->select('id', 'class_name')->get();
+        $student = DB::table('student_identities')->select('id', 'name')->get();
+
+        return view('admin.input_mahasiswa_kelas', [
+            "sendUrl" => $sendUrl,
+            "classes" => $class,
+            "students" => $student
+        ]);
+    }
 }
