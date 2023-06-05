@@ -13,6 +13,8 @@ $("#btnAdd").on("click", function () {
     var className = $("#nama_kelas").val()
 
     if ($("#nama_kelas").val() == '') {
+        $("#nama_kelas").removeClass("border-gray-300")
+        $("#nama_kelas").addClass("border-red-600")
         $("#confirmLengthKelas").attr("hidden", true)
         $("#nama_kelas").next("span").attr("hidden", true)
         $("#confirmSameKelas").attr("hidden", true)
@@ -20,6 +22,8 @@ $("#btnAdd").on("click", function () {
         return false
     }
     else if ($("#nama_kelas").val().length < 4) {
+        $("#nama_kelas").removeClass("border-gray-300")
+        $("#nama_kelas").addClass("border-red-600")
         $("#confirmLengthKelas").attr("hidden", true)
         $("#nama_kelas").next("span").attr("hidden", true)
         $("#confirmSameKelas").attr("hidden", true)
@@ -27,6 +31,8 @@ $("#btnAdd").on("click", function () {
         return false
     }
     else if (classTemp.includes(className)) {
+        $("#nama_kelas").removeClass("border-gray-300")
+        $("#nama_kelas").addClass("border-red-600")
         $("#confirmLengthKelas").attr("hidden", true)
         $("#nama_kelas").next("span").attr("hidden", true)
         $("#confirmSameKelas").attr("hidden", true)
@@ -34,6 +40,8 @@ $("#btnAdd").on("click", function () {
         return false
     }
     else {
+        $("#nama_kelas").removeClass("border-red-600")
+        $("#nama_kelas").addClass("border-gray-300")
         $("#confirmLengthKelas").attr("hidden", true)
         $("#nama_kelas").next("span").attr("hidden", true)
         $("#confirmSameKelas").attr("hidden", true)
@@ -41,7 +49,7 @@ $("#btnAdd").on("click", function () {
         $("#rememberLabel").removeClass("text-gray-200")
         $("#rememberLabel").addClass("text-gray-900")
     }
-
+    classTemp.push(className)
     $("#zeroContent").attr("hidden", true)
     colNo++
     number++
@@ -63,7 +71,6 @@ $("#btnAdd").on("click", function () {
             </td>
         </tr>
     `)
-    classTemp.push(className)
     classList[colNo] = {className}
     $("#nama_kelas_val").val(JSON.stringify(classList))
     $("#"+ colNo +"_btnDelete").on("click", function () {
