@@ -33,8 +33,6 @@ return new class extends Migration
             $table->string('study_program', 15);
             $table->string('semester', 5);
             $table->string('academic_year', 10);
-            $table->unsignedBigInteger('id_classname')->nullable();
-            $table->foreign('id_classname')->references('id')->on('classnames');
             $table->text('photo');
             $table->timestamps();
         });
