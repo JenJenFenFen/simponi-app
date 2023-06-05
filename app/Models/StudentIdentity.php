@@ -26,10 +26,8 @@ class StudentIdentity extends Model
         'school_last_education',
         'major',
         'study_program',
-        'id_classname',
         'semester',
         'academic_year',
-        'id_classname',
         'photo'
     ];
 }
