@@ -1,11 +1,11 @@
 var colNo = 0
 var number = 0
-var selectVal = true
-var selectValSame = true
 var studentTemp = {}
 var studentList = {}
 
 $("#btnAdd").on("click", function () {
+    var selectVal = true
+    var selectValSame = true
     var className = $("#nama_kelas option:selected").text()
     var studentName = $("#nama_mahasiswa option:selected").text()
 
@@ -24,30 +24,31 @@ $("#btnAdd").on("click", function () {
             $(e).removeClass("border-red-600")
             $(e).addClass("border-gray-300")
             $("#" + id).next("span").attr("hidden", true)
-            $.each(studentTemp, function (i, v) { 
-                if (className == v.className && studentName == v.studentName) {
-                    $("#nama_mahasiswa").removeClass("border-gray-300")
-                    $("#nama_mahasiswa").addClass("border-red-600")
-                    $("#nama_mahasiswa").next("span").attr("hidden", true)
-                    $("#confirmSameKelas").attr("hidden", true)
-                    $("#confirmSameKelas").removeAttr("hidden")
-                    selectValSame = false
-                }
-                else {
-                    $("#nama_mahasiswa").removeClass("border-gray-300")
-                    $("#nama_mahasiswa").addClass("border-red-600")
-                    $("#nama_mahasiswa").next("span").attr("hidden", true)
-                    $("#confirmSameKelas").attr("hidden", true)
-                    selectValSame = true
-                }
-            })
-            selectVal = true
         }
     })
+    if (Object.keys(studentTemp).length > 0) {
+        $.each(studentTemp, function (i, v) { 
+            if (className == v.className && studentName == v.studentName) {
+                console.log('masuk if');
+                $("#nama_mahasiswa").removeClass("border-gray-300")
+                $("#nama_mahasiswa").addClass("border-red-600")
+                $("#nama_mahasiswa").next("span").attr("hidden", true)
+                $("#confirmSameKelas").attr("hidden", true)
+                $("#confirmSameKelas").removeAttr("hidden")
+                selectValSame = false
+            }
+            else {
+                console.log('masuk else');
+                $("#nama_mahasiswa").removeClass("border-gray-300")
+                $("#nama_mahasiswa").addClass("border-red-600")
+                $("#nama_mahasiswa").next("span").attr("hidden", true)
+                $("#confirmSameKelas").attr("hidden", true)
+            }
+        })
+    }
     console.log('selectVal ' + selectVal);
     console.log('selectValSame ' + selectValSame);
     if (selectVal && selectValSame) {
-        studentTemp[colNo] = {className, studentName}
         $("#zeroContent").attr("hidden", true)
         colNo++
         number++
@@ -72,16 +73,17 @@ $("#btnAdd").on("click", function () {
                 </td>
             </tr>
         `)
+        studentTemp[colNo] = {className, studentName}
         studentList[colNo] = {className, studentName}
         console.log('studentTemp ' , studentTemp);
-        console.log('studentList ' , studentList);
+        // console.log('studentList ' , studentList);
         $("#nama_kelas_val").val(JSON.stringify(studentList))
         $("#"+ colNo +"_btnDelete").on("click", function () {
             var e = $(this).closest("tr")
             var numberId = parseInt(e.find(".numberId").text())
-            // console.log('numberId ' + numberId);
 
             number--
+            delete studentTemp[numberId]
             delete studentList[numberId]
             e.nextAll().each(function (i, e) {
                 var numberCol = parseInt($(this).find(".numberCol").text())
@@ -102,7 +104,7 @@ $("#btnAdd").on("click", function () {
                 $("#btnProcess").addClass("cursor-not-allowed")
                 $("#btnProcess").attr("disabled", true)
             }
-            // console.log('numberCol ' + number);
+            // console.log('studentTemp ' , studentTemp);
         })
     }
 })

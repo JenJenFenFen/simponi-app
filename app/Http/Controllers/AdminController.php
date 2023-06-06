@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LecturerIdentity;
 use App\Models\StudentIdentity;
 use App\Models\Classname;
+use App\Models\StudentClassname;
 use App\Models\UserLogin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -173,5 +174,9 @@ class AdminController extends Controller
             "classes" => $class,
             "students" => $student
         ]);
+    }
+
+    public function sendMahasiswaKelas () {
+        
     }
 }
