@@ -11,3 +11,4 @@ Route::post('/send-dosen', [AdminController::class, 'sendDosen'])->name('sendDos
 Route::get('/daftar-kelas', [AdminController::class, 'daftarKelas'])->name('daftarKelas');
 Route::post('/send-kelas', [AdminController::class, 'sendKelas'])->name('sendKelas');
 Route::get('/input-mahasiswa-kelas', [AdminController::class, 'inputMahasiswaKelas'])->name('inputMahasiswaKelas');
+Route::post('/send-mahasiswa-kelas', [AdminController::class, 'sendMahasiswaKelas'])->name('sendMahasiswaKelas');
