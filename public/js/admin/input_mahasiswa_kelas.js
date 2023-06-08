@@ -8,47 +8,37 @@ $("#btnAdd").on("click", function () {
     var selectValSame = true
     var className = $("#nama_kelas option:selected").text()
     var studentName = $("#nama_mahasiswa option:selected").text()
+    var classNameVal = $("#nama_kelas option:selected").val()
+    var studentNameVal = $("#nama_mahasiswa option:selected").val()
 
     $("select").each(function (i, e) {
         var id = $(e).attr("id")
 
+        $(e).removeClass("border-gray-300")
+        $(e).removeClass("border-red-600")
+        $("#" + id).next("span").attr("hidden", true)
+        $("#confirmSameKelas").attr("hidden", true)
         if ($(this).val() == '') {
-            $(e).removeClass("border-red-600")
-            $(e).removeClass("border-gray-300")
             $(e).addClass("border-red-600")
             $("#" + id).next("span").removeAttr("hidden")
             selectVal = false
         }
         else {
-            $(e).removeClass("border-gray-300")
-            $(e).removeClass("border-red-600")
             $(e).addClass("border-gray-300")
-            $("#" + id).next("span").attr("hidden", true)
+            if (Object.keys(studentTemp).length > 0) {
+                $.each(studentTemp, function (i, v) { 
+                    if (className == v.className && studentName == v.studentName) {
+                        $("#confirmSameKelas").removeAttr("hidden")
+                        selectValSame = false
+                        return false
+                    }
+                })
+            }
         }
     })
-    if (Object.keys(studentTemp).length > 0) {
-        $.each(studentTemp, function (i, v) { 
-            if (className == v.className && studentName == v.studentName) {
-                console.log('masuk if');
-                $("#nama_mahasiswa").removeClass("border-gray-300")
-                $("#nama_mahasiswa").addClass("border-red-600")
-                $("#nama_mahasiswa").next("span").attr("hidden", true)
-                $("#confirmSameKelas").attr("hidden", true)
-                $("#confirmSameKelas").removeAttr("hidden")
-                selectValSame = false
-            }
-            else {
-                console.log('masuk else');
-                $("#nama_mahasiswa").removeClass("border-gray-300")
-                $("#nama_mahasiswa").addClass("border-red-600")
-                $("#nama_mahasiswa").next("span").attr("hidden", true)
-                $("#confirmSameKelas").attr("hidden", true)
-            }
-        })
-    }
-    console.log('selectVal ' + selectVal);
-    console.log('selectValSame ' + selectValSame);
     if (selectVal && selectValSame) {
+        $("#remember").removeAttr("disabled")
+        $("#rememberLabel").addClass("text-gray-900")
         $("#zeroContent").attr("hidden", true)
         colNo++
         number++
@@ -74,10 +64,8 @@ $("#btnAdd").on("click", function () {
             </tr>
         `)
         studentTemp[colNo] = {className, studentName}
-        studentList[colNo] = {className, studentName}
-        console.log('studentTemp ' , studentTemp);
-        // console.log('studentList ' , studentList);
-        $("#nama_kelas_val").val(JSON.stringify(studentList))
+        studentList[colNo] = {classNameVal, studentNameVal}
+        $("#mahasiswa_kelas_val").val(JSON.stringify(studentList))
         $("#"+ colNo +"_btnDelete").on("click", function () {
             var e = $(this).closest("tr")
             var numberId = parseInt(e.find(".numberId").text())
@@ -90,9 +78,9 @@ $("#btnAdd").on("click", function () {
                 $(this).find(".numberCol").text(numberCol - 1)
             })
             e.remove()
-            $("#nama_kelas_val").val(JSON.stringify(studentList))
+            $("#mahasiswa_kelas_val").val(JSON.stringify(studentList))
             if(Object.keys(studentList).length <= 0) {
-                $("#nama_kelas_val").removeAttr("value")
+                $("#mahasiswa_kelas_val").removeAttr("value")
                 $("#zeroContent").removeAttr("hidden")
                 $("#remember").prop("checked", false)
                 $("#remember").attr("disabled", true)
@@ -104,24 +92,23 @@ $("#btnAdd").on("click", function () {
                 $("#btnProcess").addClass("cursor-not-allowed")
                 $("#btnProcess").attr("disabled", true)
             }
-            // console.log('studentTemp ' , studentTemp);
         })
     }
 })
 
 $("#remember").on("change", function () {
+    $("#btnProcess").removeClass("bg-gray-200")
+    $("#btnProcess").removeClass("cursor-not-allowed")
+    $("#btnProcess").removeClass("bg-blue-700")
+    $("#btnProcess").removeClass("hover:bg-blue-800")
+    $("#btnProcess").attr("disabled", true)
     if ($(this).is(":checked")) {
-        $("#btnProcess").removeClass("bg-gray-200")
-        $("#btnProcess").removeClass("cursor-not-allowed")
         $("#btnProcess").addClass("bg-blue-700")
         $("#btnProcess").addClass("hover:bg-blue-800")
         $("#btnProcess").removeAttr("disabled")
     }
     else {
-        $("#btnProcess").removeClass("bg-blue-700")
-        $("#btnProcess").removeClass("hover:bg-blue-800")
         $("#btnProcess").addClass("bg-gray-200")
         $("#btnProcess").addClass("cursor-not-allowed")
-        $("#btnProcess").attr("disabled", true)
     }
 })
