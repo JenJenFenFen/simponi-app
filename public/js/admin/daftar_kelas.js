@@ -12,41 +12,31 @@ $("#nama_kelas").on("keypress", function (e) {
 $("#btnAdd").on("click", function () {
     var className = $("#nama_kelas").val()
 
+    $("#nama_kelas").removeClass("border-gray-300")
+    $("#nama_kelas").removeClass("border-red-600")
+    $("#rememberLabel").removeClass("text-gray-200")
+    $("#rememberLabel").removeClass("text-gray-900")
+    $("#confirmLengthKelas").attr("hidden", true)
+    $("#nama_kelas").next("span").attr("hidden", true)
+    $("#confirmSameKelas").attr("hidden", true)
     if ($("#nama_kelas").val() == '') {
-        $("#nama_kelas").removeClass("border-gray-300")
         $("#nama_kelas").addClass("border-red-600")
-        $("#confirmLengthKelas").attr("hidden", true)
-        $("#nama_kelas").next("span").attr("hidden", true)
-        $("#confirmSameKelas").attr("hidden", true)
         $("#nama_kelas").next("span").removeAttr("hidden")
         return false
     }
     else if ($("#nama_kelas").val().length < 4) {
-        $("#nama_kelas").removeClass("border-gray-300")
         $("#nama_kelas").addClass("border-red-600")
-        $("#confirmLengthKelas").attr("hidden", true)
-        $("#nama_kelas").next("span").attr("hidden", true)
-        $("#confirmSameKelas").attr("hidden", true)
         $("#confirmLengthKelas").removeAttr("hidden")
         return false
     }
     else if (classTemp.includes(className)) {
-        $("#nama_kelas").removeClass("border-gray-300")
         $("#nama_kelas").addClass("border-red-600")
-        $("#confirmLengthKelas").attr("hidden", true)
-        $("#nama_kelas").next("span").attr("hidden", true)
-        $("#confirmSameKelas").attr("hidden", true)
         $("#confirmSameKelas").removeAttr("hidden")
         return false
     }
     else {
-        $("#nama_kelas").removeClass("border-red-600")
         $("#nama_kelas").addClass("border-gray-300")
-        $("#confirmLengthKelas").attr("hidden", true)
-        $("#nama_kelas").next("span").attr("hidden", true)
-        $("#confirmSameKelas").attr("hidden", true)
         $("#remember").removeAttr("disabled")
-        $("#rememberLabel").removeClass("text-gray-200")
         $("#rememberLabel").addClass("text-gray-900")
     }
     classTemp.push(className)
@@ -107,18 +97,18 @@ $("#btnAdd").on("click", function () {
 })
 
 $("#remember").on("change", function () {
+    $("#btnProcess").removeClass("bg-gray-200")
+    $("#btnProcess").removeClass("cursor-not-allowed")
+    $("#btnProcess").removeClass("bg-blue-700")
+    $("#btnProcess").removeClass("hover:bg-blue-800")
+    $("#btnProcess").attr("disabled", true)
     if ($(this).is(":checked")) {
-        $("#btnProcess").removeClass("bg-gray-200")
-        $("#btnProcess").removeClass("cursor-not-allowed")
         $("#btnProcess").addClass("bg-blue-700")
         $("#btnProcess").addClass("hover:bg-blue-800")
         $("#btnProcess").removeAttr("disabled")
     }
     else {
-        $("#btnProcess").removeClass("bg-blue-700")
-        $("#btnProcess").removeClass("hover:bg-blue-800")
         $("#btnProcess").addClass("bg-gray-200")
         $("#btnProcess").addClass("cursor-not-allowed")
-        $("#btnProcess").attr("disabled", true)
     }
 })
