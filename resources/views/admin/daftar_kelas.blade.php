@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simponi</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body>
-    {{-- sidebars --}}
-    @include('components.sidebars')
+@extends('main')
+
+@section('container')
     <div class="px-4 sm:ml-64">
         <div class="px-4 pb-[30px] mt-14">
             <div class="grid gap-4">
@@ -79,6 +70,4 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('js/admin/daftar_kelas.js') }}"></script>
-
-</body>
-</html>
+@endsection 
