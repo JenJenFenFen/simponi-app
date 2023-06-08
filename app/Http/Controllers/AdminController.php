@@ -36,7 +36,7 @@ class CodeMhs {
 class AdminController extends Controller
 {
     public function main() {
-        return view('components.sidebars');
+        return view('main');
     }
 
     public function daftarMahasiswa() {
@@ -165,7 +165,7 @@ class AdminController extends Controller
     }
 
     public function inputMahasiswaKelas () {
-        $sendUrl = route('inputMahasiswaKelas');
+        $sendUrl = route('sendMahasiswaKelas');
         $class = DB::table('classnames')->select('id', 'class_name')->get();
         $student = DB::table('student_identities')->select('id', 'name')->get();
 
@@ -176,7 +176,16 @@ class AdminController extends Controller
         ]);
     }
 
-    public function sendMahasiswaKelas () {
+    public function sendMahasiswaKelas (Request $request) {
+        $data = json_decode($request->mahasiswa_kelas_val, true);
+
+        foreach($data as $input) {
+            StudentClassname::create([
+                "id_classname" => $input['classNameVal'],
+                "id_student_identity" => $input['studentNameVal']
+            ]);
+        }
         
+        return redirect()->route('inputMahasiswaKelas');
     }
 }
