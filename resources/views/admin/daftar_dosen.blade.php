@@ -17,7 +17,7 @@
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for="nama_lengkap_dsn" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                        <input type="text" id="nama_lengkap_dsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" id="nama_lengkap_dsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 alphabetValidation" required>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                     </div>
                     <div>
@@ -41,8 +41,9 @@
                     </div> 
                     <div>
                         <label for="ktp_dsn" class="block mb-2 text-sm font-medium text-gray-900">KTP</label>
-                        <input type="text" id="ktp_dsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" id="ktp_dsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 numberValidation checkLength" maxlength="16" required>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
+                        <span id="confirmLengthKtp" class="font-medium mt-2 text-sm text-red-600" hidden>Format KTP salah! Silakan diperbaiki!</span>
                     </div>
                     <div>
                         <label for="agama_dsn" class="block mb-2 text-sm font-medium text-gray-900">Agama</label>
@@ -103,13 +104,15 @@
                     </div>
                     <div>
                         <label for="no_hp_dsn" class="block mb-2 text-sm font-medium text-gray-900">No Handphone</label>
-                        <input type="text" id="no_hp_dsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" id="no_hp_dsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 numberValidation checkLength" maxlength="15" required>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
+                        <span id="confirmLengthHp" class="font-medium mt-2 text-sm text-red-600" hidden>Format no handphone salah! Silakan diperbaiki!</span>
                     </div>
                     <div>
-                        <label for="photo_dsn" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
-                        <input id="photo_dsn" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" type="file" required>
+                        <label for="photo_dsn" class="block mb-2 text-sm font-medium text-gray-900">Foto (Maks 1 MB)</label>
+                        <input id="photo_dsn" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" type="file" accept="image/jpg, image/jpeg, image/png" required>
                         <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
+                        <span id="confirmSizePhoto" class="font-medium mt-2 text-sm text-red-600" hidden>File foto lebih dari 1 MB!</span>
                     </div>
                 </div>
             </div>
@@ -254,6 +257,10 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="{{ asset('js/alphabet_space_validation.js') }}"></script>
+    <script src="{{ asset('js/number_validation.js') }}"></script>
+    <script src="{{ asset('js/number_length_validation.js') }}"></script>
+    <script src="{{ asset('js/photo_validation.js') }}"></script>
     <script src="{{ asset('js/hide_show_password.js') }}"></script>
     <script src="{{ asset('js/read_photo.js') }}"></script>
     <script src="{{ asset('js/admin/daftar_baru.js') }}"></script>
