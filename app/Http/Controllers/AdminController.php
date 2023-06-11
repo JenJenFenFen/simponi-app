@@ -9,7 +9,6 @@ use App\Models\StudentClassname;
 use App\Models\Material;
 use App\Models\Schedule;
 use App\Models\UserLogin;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -59,13 +58,13 @@ class AdminController extends Controller
         $login->save();
 
         // get id for id_user_login
-        $id_login_raw = DB::table('user_logins')->select('id')->where('email', $request->email_mhs_val)->get();
+        $id_login_raw = $login::select('id')->where('email', $request->email_mhs_val)->get();
         $id_login = json_decode($id_login_raw, true)[0]['id'];
 
         // create nim
         $year = date('Y');
         $codeMajor = (new CodeMhs($request->jurusan_mhs_val))->getCode();
-        $count = DB::table('student_identities')->where('major', $request->jurusan_mhs_val)->count() + 1;
+        $count = StudentIdentity::where('major', $request->jurusan_mhs_val)->count() + 1;
         $nim = (intval($year . $codeMajor) * 10000) + $count;
 
         $mahasiswa = new StudentIdentity;
@@ -113,11 +112,11 @@ class AdminController extends Controller
         $login->save();
 
         // get id for id_user_login
-        $id_login_raw = DB::table('user_logins')->select('id')->where('email', $request->email_dsn_val)->get();
+        $id_login_raw = $login::select('id')->where('email', $request->email_dsn_val)->get();
         $id_login = json_decode($id_login_raw, true)[0]['id'];
 
         // create nid
-        $count = DB::table('lecturer_identities')->count() + 1;
+        $count = LecturerIdentity::count() + 1;
         $nid = (111 * 10000) + $count;
 
         $dosen = new LecturerIdentity;
@@ -168,9 +167,9 @@ class AdminController extends Controller
 
     public function daftarJadwal () {
         $sendUrl = route('sendJadwal');
-        $class = DB::table('classnames')->select('id', 'class_name')->get();
-        $material = DB::table('materials')->select('id', 'material_name')->get();
-        $lecturer = DB::table('lecturer_identities')->select('id', 'name')->get();
+        $class = StudentClassname::select('id_classname')->distinct()->get();
+        $material = Material::select('id', 'material_name')->get();
+        $lecturer = LecturerIdentity::select('id', 'name')->get();
 
         return view('admin.daftar_jadwal', [
             "sendUrl" => $sendUrl,
@@ -218,8 +217,8 @@ class AdminController extends Controller
 
     public function inputMahasiswaKelas () {
         $sendUrl = route('sendMahasiswaKelas');
-        $class = DB::table('classnames')->select('id', 'class_name')->get();
-        $student = DB::table('student_identities')->select('id', 'name')->get();
+        $class = Classname::select('id', 'class_name')->get();
+        $student = StudentIdentity::select('id', 'name')->get();
 
         return view('admin.input_mahasiswa_kelas', [
             "sendUrl" => $sendUrl,
