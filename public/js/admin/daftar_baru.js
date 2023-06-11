@@ -68,11 +68,21 @@ function nextPage() {
     })
     if (inputVal && selectVal) {
         if (currentPage == 1) {
-            ktpValidation("#ktp_mhs", "#confirmLengthKtp")
-            hpValidation("#no_hp_mhs", "#confirmLengthHp")
-            sizePhotovalidation("#photo_mhs", "#confirmSizePhoto")
-            if (ktpValidation("#ktp_mhs", "#confirmLengthKtp") == false || hpValidation("#no_hp_mhs", "#confirmLengthHp") == false || sizePhotovalidation("#photo_mhs", "#confirmSizePhoto") == false) {
-                return false
+            if ($("#pageValue").text() == 'mahasiswa') {
+                ktpValidation("#ktp_mhs", "#confirmLengthKtp")
+                hpValidation("#no_hp_mhs", "#confirmLengthHp")
+                sizePhotovalidation("#photo_mhs", "#confirmSizePhoto")
+                if (ktpValidation("#ktp_mhs", "#confirmLengthKtp") == false || hpValidation("#no_hp_mhs", "#confirmLengthHp") == false || sizePhotovalidation("#photo_mhs", "#confirmSizePhoto") == false) {
+                    return false
+                }
+            }
+            else {
+                ktpValidation("#ktp_dsn", "#confirmLengthKtp")
+                hpValidation("#no_hp_dsn", "#confirmLengthHp")
+                sizePhotovalidation("#photo_dsn", "#confirmSizePhoto")
+                if (ktpValidation("#ktp_dsn", "#confirmLengthKtp") == false || hpValidation("#no_hp_dsn", "#confirmLengthHp") == false || sizePhotovalidation("#photo_dsn", "#confirmSizePhoto") == false) {
+                    return false
+                }
             }
         }
         else if (currentPage == 2) {
