@@ -6,6 +6,8 @@ use App\Models\LecturerIdentity;
 use App\Models\StudentIdentity;
 use App\Models\Classname;
 use App\Models\StudentClassname;
+use App\Models\Material;
+use App\Models\Schedule;
 use App\Models\UserLogin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -142,6 +144,56 @@ class AdminController extends Controller
         $dosen->save();
 
         return redirect()->route('daftarDosen');
+    }
+
+    public function daftarMaterial () {
+        $sendUrl = route('sendMaterial');
+
+        return view('admin.daftar_material', [
+            "sendUrl" => $sendUrl
+        ]);
+    }
+
+    public function sendMaterial (Request $request) {
+        $data = json_decode($request->nama_material_val, true);
+
+        foreach($data as $input) {
+            Material::create([
+                "material_name" => $input['materialName']
+            ]);
+        }
+        
+        return redirect()->route('daftarMaterial');
+    }
+
+    public function daftarJadwal () {
+        $sendUrl = route('sendJadwal');
+        $class = DB::table('classnames')->select('id', 'class_name')->get();
+        $material = DB::table('materials')->select('id', 'material_name')->get();
+        $lecturer = DB::table('lecturer_identities')->select('id', 'name')->get();
+
+        return view('admin.daftar_jadwal', [
+            "sendUrl" => $sendUrl,
+            "classes" => $class,
+            "materials" => $material,
+            "lecturers" => $lecturer
+        ]);
+    }
+
+    public function sendJadwal (Request $request) {
+        $data = json_decode($request->jadwal_val, true);
+
+        foreach($data as $input) {
+            Schedule::create([
+                "id_lecturer" => $input['lecturerNameVal'],
+                "id_classname" => $input['classNameVal'],
+                "id_material" => $input['materialNameVal'],
+                "day" => $input['dayNameVal'],
+                "clock" => $input['clockNameVal']
+            ]);
+        }
+        
+        return redirect()->route('daftarJadwal');
     }
 
     public function daftarKelas () {
