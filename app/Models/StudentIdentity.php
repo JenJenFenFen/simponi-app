@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Classname;
+use App\Models\StudentClassname;
 
 class StudentIdentity extends Model
 {
@@ -32,7 +32,7 @@ class StudentIdentity extends Model
         'photo'
     ];
 
-    public function classnames () {
-        return $this->hasMany(Classname::class);
-    }
+    // public function student_classnames () {
+    //     return $this->hasMany(StudentClassname::class);
+    // }
 }
