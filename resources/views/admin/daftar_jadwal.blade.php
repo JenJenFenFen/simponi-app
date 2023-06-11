@@ -15,7 +15,7 @@
                     <select id="nama_kelas" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-300" required>
                         <option value="">Pilih kelas</option>
                         @foreach ($classes as $class)
-                            <option value="{{ $class->id }}">{{ $class->class_name }}</option>
+                            <option value="{{ $class->id_classname }}">{{ $class->classnames->class_name }}</option>
                         @endforeach
                     </select>
                     <span class="font-medium mt-2 text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
