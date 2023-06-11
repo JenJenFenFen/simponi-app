@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_material');
             $table->foreign('id_material')->references('id')->on('materials');
             $table->string('day', 10);
-            $table->time('clock');
+            $table->string('clock', 10);
             $table->timestamps();
         });
     }
