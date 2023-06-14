@@ -5,8 +5,8 @@ var classList = {}
 
 $("#nama_kelas").on("keypress", function (e) {
     var keyCode = e.keyCode || e.which
-    if (keyCode == 32) return false
-    if (keyCode == 13) $("#btnAdd").trigger("click")
+    if (keyCode == 32) return false // spasi
+    if (keyCode == 13) $("#btnAdd").trigger("click") // enter
 })
 
 $("#btnAdd").on("click", function () {
