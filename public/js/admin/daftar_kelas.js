@@ -1,7 +1,7 @@
 var colNo = 0
 var number = 0
 var classTemp = []
-var classList = {}
+var classList = []
 
 $("#nama_kelas").on("keypress", function (e) {
     var keyCode = e.keyCode || e.which
@@ -61,8 +61,9 @@ $("#btnAdd").on("click", function () {
             </td>
         </tr>
     `)
-    classList[colNo] = {className}
-    $("#nama_kelas_val").val(JSON.stringify(classList))
+    classList.push(className)
+    console.log(classList);
+    $("#nama_kelas_val").val(classList)
     $("#"+ colNo +"_btnDelete").on("click", function () {
         var e = $(this).closest("tr")
         var numberId = parseInt(e.find(".numberId").text())
@@ -71,15 +72,16 @@ $("#btnAdd").on("click", function () {
         // console.log('numberId ' + numberId);
 
         number--
-        delete classList[numberId]
+        classList.splice(index, 1)
         classTemp.splice(index, 1)
+        console.log(classList);
         e.nextAll().each(function (i, e) {
             var numberCol = parseInt($(this).find(".numberCol").text())
             $(this).find(".numberCol").text(numberCol - 1)
         })
         e.remove()
-        $("#nama_kelas_val").val(JSON.stringify(classList))
-        if(Object.keys(classList).length <= 0) {
+        $("#nama_kelas_val").val(classList)
+        if(classList.length <= 0) {
             $("#nama_kelas_val").removeAttr("value")
             $("#zeroContent").removeAttr("hidden")
             $("#remember").prop("checked", false)
