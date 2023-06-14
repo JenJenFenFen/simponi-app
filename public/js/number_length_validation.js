@@ -27,3 +27,25 @@ function hpValidation(element1, element2) {
         return true
     }
 }
+
+function nimValidation(element1, element2) {
+    var e1 = $(element1).val()
+    var e2 = $(element2)
+
+    if (e1.length < 10) {
+        e2.removeAttr("hidden")
+        return false
+    }
+    else return true
+}
+
+function nidValidation(element1, element2) {
+    var e1 = $(element1).val()
+    var e2 = $(element2)
+
+    if (e1.length < 7) {
+        e2.removeAttr("hidden")
+        return false
+    }
+    else return true
+}
