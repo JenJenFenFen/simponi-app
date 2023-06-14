@@ -1,7 +1,7 @@
 var colNo = 0
 var number = 0
 var materialTemp = []
-var materialList = {}
+var materialList = []
 
 $("#nama_material").on("keypress", function (e) {
     var keyCode = e.keyCode || e.which
@@ -54,8 +54,8 @@ $("#btnAdd").on("click", function () {
             </td>
         </tr>
     `)
-    materialList[colNo] = {materialName}
-    $("#nama_material_val").val(JSON.stringify(materialList))
+    materialList.push(materialName)
+    $("#nama_material_val").val(materialList)
     $("#"+ colNo +"_btnDelete").on("click", function () {
         var e = $(this).closest("tr")
         var numberId = parseInt(e.find(".numberId").text())
@@ -64,15 +64,15 @@ $("#btnAdd").on("click", function () {
         // console.log('numberId ' + numberId);
 
         number--
-        delete materialList[numberId]
+        materialList.splice(index, 1)
         materialTemp.splice(index, 1)
         e.nextAll().each(function (i, e) {
             var numberCol = parseInt($(this).find(".numberCol").text())
             $(this).find(".numberCol").text(numberCol - 1)
         })
         e.remove()
-        $("#nama_material_val").val(JSON.stringify(materialList))
-        if(Object.keys(materialList).length <= 0) {
+        $("#nama_material_val").val(materialList)
+        if(materialList.length <= 0) {
             $("#nama_material_val").removeAttr("value")
             $("#zeroContent").removeAttr("hidden")
             $("#remember").prop("checked", false)
