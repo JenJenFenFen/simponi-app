@@ -154,11 +154,11 @@ class AdminController extends Controller
     }
 
     public function sendMaterial (Request $request) {
-        $data = json_decode($request->nama_material_val, true);
+        $data = explode(',', $request->nama_material_val);
 
         foreach($data as $input) {
             Material::create([
-                "material_name" => $input['materialName']
+                "material_name" => $input
             ]);
         }
         
@@ -204,11 +204,11 @@ class AdminController extends Controller
     }
 
     public function sendKelas (Request $request) {
-        $data = json_decode($request->nama_kelas_val, true);
+        $data = explode(',', $request->nama_kelas_val);
 
         foreach($data as $input) {
             Classname::create([
-                "class_name" => strtoupper($input['className'])
+                "class_name" => strtoupper($input)
             ]);
         }
         
