@@ -239,4 +239,44 @@ class AdminController extends Controller
         
         return redirect()->route('inputMahasiswaKelas');
     }
+
+    public function cekMahasiswa () {
+        $sendUrl = route('fetchMahasiswa');
+        
+        return view('admin.cek_mahasiswa', [
+            "sendUrl" => $sendUrl
+        ]);
+    }
+
+    public function fetchMahasiswa (Request $request) {
+        if ($request->ajax()) {
+            if (isset($request->nim_mhs)) { // isset cek ada isi
+                $mahasiswa = StudentIdentity::where('nim', ''. $request->nim_mhs .'')->get();
+            }
+            else {
+                $mahasiswa = StudentIdentity::where('name', 'like', '%'. $request->nama_mhs .'%')->get();
+            }
+            return $mahasiswa;
+        }
+    }
+
+    public function cekDosen () {
+        $sendUrl = route('fetchDosen');
+        
+        return view('admin.cek_dosen', [
+            "sendUrl" => $sendUrl
+        ]);
+    }
+
+    public function fetchDosen (Request $request) {
+        if ($request->ajax()) {
+            if (isset($request->nid_dsn)) { // isset cek ada isi
+                $dosen = LecturerIdentity::where('nid', ''. $request->nid_dsn .'')->get();
+            }
+            else {
+                $dosen = LecturerIdentity::where('name', 'like', '%'. $request->nama_dsn .'%')->get();
+            }
+            return $dosen;
+        }
+    }
 }
