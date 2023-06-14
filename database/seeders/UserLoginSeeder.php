@@ -49,6 +49,12 @@ class UserLoginSeeder extends Seeder
             'password' => Crypt::encryptString('selatpanjang'),
             'id_rule' => 3
         ]);
+
+        UserLogin::create([
+            'email' => 'jefryfernandes@gmail.com',
+            'password' => Crypt::encryptString('selatpanjang'),
+            'id_rule' => 2
+        ]);
         
     }
 }
