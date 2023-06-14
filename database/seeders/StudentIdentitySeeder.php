@@ -81,5 +81,28 @@ class StudentIdentitySeeder extends Seeder
             'academic_year' => '2023',
             'photo' => 'mahasiswa/2023230001/JoG4OF1ygKjK6PXY5XDP7oDqRsuNxFwiQZgnmiz2.jpg'
         ]);
+
+        StudentIdentity::create([
+            'id_user_login' => 7,
+            'nim' => '2023260001',
+            'name' => 'Jefry Fernandes',
+            'gender' => 'Laki-Laki',
+            'country' => 'Palembang',
+            'date_birth' => '1999-03-11',
+            'religion' => 'Katolik',
+            'ktp' => '1671846589030004',
+            'address' => 'Jl. Duda Perkasa No. 221',
+            'status' => 'Belum Menikah',
+            'number_phone' => '098765432109',
+            'email' => 'jefryfernandes@gmail.com',
+            'last_education' => 'SMA/SMK',
+            'major_last_education' => 'IPS',
+            'school_last_education' => 'Methodist 2 Palembang',
+            'major' => 'Teknik Komputer',
+            'study_program' => 'S1',
+            'semester' => '1',
+            'academic_year' => '2023',
+            'photo' => 'mahasiswa/2023260001/3U35Ba9IejabCoxtq2Pmv00bGFFtCTYbn4gVgUqe.jpg'
+        ]);
     }
 }
