@@ -31,3 +31,10 @@ I have created a university website inspired by Simponi at Multi Data University
     - First terminal, run `npm run dev` to frontend.
     - Second terminal, run `php artisan serve` to backend.
 - Open browser, type `localhost:8000/admin`.
+
+## Note
+
+- You can use another seeder like ClassnameSeeder, MaterialSeeder, and others. Run the seeder: `php artisan db:seed --class=NameSeeder`. This is order to run the seeder:
+    - UserLoginSeeder
+    - StudentIdentitySeeder or LecturerIdentitySeeder
+    - ClassnameSeeder or MaterialSeeder
