@@ -33,6 +33,7 @@ function nimValidation(element1, element2) {
     var e2 = $(element2)
 
     if (e1.length < 10) {
+        $(element1).addClass("border-red-600")
         e2.removeAttr("hidden")
         return false
     }
@@ -44,6 +45,7 @@ function nidValidation(element1, element2) {
     var e2 = $(element2)
 
     if (e1.length < 7) {
+        $(element1).addClass("border-red-600")
         e2.removeAttr("hidden")
         return false
     }
