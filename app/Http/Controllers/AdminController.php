@@ -184,7 +184,7 @@ class AdminController extends Controller
 
         foreach($data as $input) {
             Schedule::create([
-                "id_lecturer" => $input['lecturerNameVal'],
+                "id_lecturer_identity" => $input['lecturerNameVal'],
                 "id_classname" => $input['classNameVal'],
                 "id_material" => $input['materialNameVal'],
                 "day" => $input['dayNameVal'],
