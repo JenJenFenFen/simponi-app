@@ -21,7 +21,7 @@
                         <div class="w-[500px] mb-3">
                             <span id="errorEmpty" class="font-medium text-sm text-red-600" hidden>Masih kosong! Silakan diisi!</span>
                             <span id="errorBoth" class="font-medium text-sm text-red-600" hidden>Pilih salah satu yang diisi!</span>
-                            <span id="errorLengthNid" class="font-medium text-sm text-red-600" hidden>Format NIM salah! Silakan diperbaiki!</span>
+                            <span id="errorLengthNim" class="font-medium text-sm text-red-600" hidden>Format NIM salah! Silakan diperbaiki!</span>
                             <span id="errorNotFound" class="font-medium text-sm text-red-600" hidden>Mahasiswa tidak ditemukan!</span>
                         </div>
                     </div>
@@ -39,6 +39,15 @@
             </form>
 
             <div id="cardResult" class="flex flex-wrap"></div>
+            {{-- <a class="flex flex-col items-center mt-10 mr-5 w-[494px] bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-200">
+                <img class="object-cover rounded-t-lg w-[100px] md:rounded-none md:rounded-l-lg" src="`+ assetTemplate + photoMhsRes +`" alt="">
+                <div class="flex flex-col justify-between p-4 leading-normal">
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">`+ namaMhsRes +`</h5>
+                    <span class="font-normal text-gray-700">`+ nimMhsRes +`</span>
+                    <span class="font-normal text-gray-700">`+ jurusanMhsRes +`</span>
+                    <button type="button" id="btnEdit" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-16 mt-5 px-5 py-2.5 text-center">Edit</button>
+                </div>
+            </a> --}}
         </div>
     </div>
 
